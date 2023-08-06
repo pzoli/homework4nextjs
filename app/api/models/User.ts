@@ -21,9 +21,9 @@ const userSchema = new Schema({
 userSchema.pre("deleteOne", async function (next) {
     const doc = await this.model.findOne(this.getFilter());
     //console.log(JSON.stringify(doc));
-    let resUserAnswer = await UserAnswer.UserAnswer.deleteMany({ user_id: doc._id });
+    let resUserAnswer = await UserAnswer.deleteMany({ user_id: doc._id });
     //console.log(JSON.stringify(resUserAnswer));
-    let resEvaluation = await Evaluation.Evaluation.deleteMany({ user_id: doc._id });
+    let resEvaluation = await Evaluation.deleteMany({ user_id: doc._id });
     //console.log(JSON.stringify(resEvaluation));
     next();
 });
@@ -32,15 +32,12 @@ userSchema.pre("deleteMany", async function (next) {
     const docs = await this.model.find(this.getFilter());
     //console.log(JSON.stringify(docs));
     docs.forEach(async (doc) => {
-        let resUserAnswer = await UserAnswer.UserAnswer.deleteMany({ user_id: doc._id });
+        let resUserAnswer = await UserAnswer.deleteMany({ user_id: doc._id });
         //console.log(JSON.stringify(resUserAnswer));
-        let resEvaluation = await Evaluation.Evaluation.deleteMany({ user_id: doc._id });
+        let resEvaluation = await Evaluation.deleteMany({ user_id: doc._id });
         //console.log(JSON.stringify(resEvaluation));
     });
     next();
 });
 
-
-const User = mongoose.models.User ?? model("user", userSchema);
-
-export default { User };
+export default mongoose.models.User || model("user", userSchema);

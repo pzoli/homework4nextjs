@@ -21,6 +21,4 @@ const userAnswerSchema = new Schema({
     },
 });
 
-const UserAnswer = mongoose.models.UserAnswer ?? model("useranswer", userAnswerSchema);
-
-export default { UserAnswer };
+export default mongoose.models.UserAnswer || model("useranswer", userAnswerSchema);;

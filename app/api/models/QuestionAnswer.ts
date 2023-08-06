@@ -20,7 +20,7 @@ const questionAnswerSchema = new Schema({
 questionAnswerSchema.pre("deleteOne", async function (next) {
     const doc = await this.model.findOne(this.getFilter());
     //console.log(JSON.stringify(doc));
-    let res = await UserAnswer.UserAnswer.deleteMany({ question_answer_id: doc._id });
+    let res = await UserAnswer.deleteMany({ question_answer_id: doc._id });
     //console.log(JSON.stringify(res));
     next();
 });
@@ -29,12 +29,10 @@ questionAnswerSchema.pre("deleteMany", async function (next) {
     const docs = await this.model.find(this.getFilter());
     //console.log(JSON.stringify(docs));
     docs.forEach(async (doc) => {
-        let res = await UserAnswer.UserAnswer.deleteMany({ question_answer_id: doc._id });
+        let res = await UserAnswer.deleteMany({ question_answer_id: doc._id });
         //console.log(JSON.stringify(res));
     })
     next();
 });
 
-const QuestionAnswer = mongoose.models.QuestionAnswer ?? model("questionanswer", questionAnswerSchema);
-
-export default { QuestionAnswer };
+export default mongoose.models.QuestionAnswer || model("questionanswer", questionAnswerSchema);

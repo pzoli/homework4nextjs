@@ -21,6 +21,4 @@ const evaluationSchema = new Schema({
     },
 });
 
-const Evaluation = mongoose.models.Evaluation ?? model("evaluation", evaluationSchema);
-
-export default { Evaluation };
+export default mongoose.models.Evaluation || model("evaluation", evaluationSchema);

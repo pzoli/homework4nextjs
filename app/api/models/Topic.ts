@@ -25,7 +25,7 @@ const topicSchema = new Schema({
 topicSchema.pre("deleteOne", async function (next) {
     const doc = await this.model.findOne(this.getFilter());
     //console.log(JSON.stringify(doc));
-    let res = await Question.Question.deleteMany({ topic_id: doc._id });
+    let res = await Question.deleteMany({ topic_id: doc._id });
     //console.log(JSON.stringify(res));
     next();
 });
@@ -34,13 +34,10 @@ topicSchema.pre("deleteMany", async function (next) {
     const docs = await this.model.find(this.getFilter());
     //console.log(JSON.stringify(docs));
     docs.forEach(async (doc) => {
-        let res = await Question.Question.deleteMany({ topic_id: doc._id });
+        let res = await Question.deleteMany({ topic_id: doc._id });
         //console.log(JSON.stringify(res));
     })
     next();
 });
 
-
-const Topic = mongoose.models.Topic ?? model("topic", topicSchema);
-
-export default { Topic };
+export default mongoose.models.Topic || model("topic", topicSchema);
