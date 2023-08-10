@@ -11,7 +11,7 @@ export default function Difficulty() {
     const { data: difficultyValues, status: dataFetchStatus, isLoading: isDataLoading } = useQuery({
         queryKey: ["difficulty"],
         queryFn: async () => {
-            const res = await fetch(`/api/difficulty`);
+            const res = await fetch(`/api/difficulty`, { cache: "no-cache" });
             return res.json();
         }
     });

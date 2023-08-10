@@ -11,7 +11,7 @@ export default function Questoin() {
     const { data: questionValues, status: dataFetchStatus, isLoading: isDataLoading } = useQuery({
         queryKey: ["question"],
         queryFn: async () => {
-            const res = await fetch(`/api/question`);
+            const res = await fetch(`/api/question`, { cache: "no-cache" });
             return res.json();
         }
     });
