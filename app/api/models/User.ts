@@ -40,4 +40,4 @@ userSchema.pre("deleteMany", async function (next) {
     next();
 });
 
-export default mongoose.models.User || model("user", userSchema);
+export default mongoose.models.User || model("User", userSchema);

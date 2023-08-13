@@ -11,4 +11,4 @@ const difficultySchema = new Schema({
     },
 });
 
-export default mongoose.models.Difficulty || model("difficulty", difficultySchema);
+export default mongoose.models.Difficulty || model("Difficulty", difficultySchema);

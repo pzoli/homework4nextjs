@@ -40,4 +40,4 @@ questionSchema.pre("deleteMany", async function (next) {
     next();
 });
 
-export default mongoose.models.Question || model("question", questionSchema);
+export default mongoose.models.Question || model("Question", questionSchema);

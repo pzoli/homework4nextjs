@@ -21,4 +21,4 @@ const userAnswerSchema = new Schema({
     },
 });
 
-export default mongoose.models.UserAnswer || model("useranswer", userAnswerSchema);;
+export default mongoose.models.UserAnswer || model("UserAnswer", userAnswerSchema);;

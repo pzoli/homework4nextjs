@@ -40,4 +40,4 @@ topicSchema.pre("deleteMany", async function (next) {
     next();
 });
 
-export default mongoose.models.Topic || model("topic", topicSchema);
+export default mongoose.models.Topic || model("Topic", topicSchema);

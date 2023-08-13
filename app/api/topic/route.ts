@@ -1,9 +1,9 @@
 import connection from "@/app/lib/dbConnect";
 import { NextResponse } from "next/server";
-import Difficulty from "../models/Difficulty";
+import Topic from "../models/Topic";
 
 export async function GET() {
     await connection();
-    let result = await Difficulty.find({});
+    let result = await Topic.find({});
     return NextResponse.json(result);
 }

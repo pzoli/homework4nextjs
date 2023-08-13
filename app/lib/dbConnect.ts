@@ -1,4 +1,4 @@
-import mongoose, { ConnectOptions, connect } from "mongoose";
+import mongoose, { connect } from "mongoose";
 
 let cached: undefined | Promise<void>;
 export default () => {

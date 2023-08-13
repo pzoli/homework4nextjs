@@ -8,17 +8,17 @@ import Link from 'next/link';
 
 export default function Difficulty() {
 
-    const { data: difficultyValues, status: dataFetchStatus, isLoading: isDataLoading } = useQuery({
-        queryKey: ["difficulty"],
+    const { data: topicValues, status: dataFetchStatus, isLoading: isDataLoading } = useQuery({
+        queryKey: ["topic"],
         queryFn: async () => {
-            const res = await fetch(`/api/difficulty`, { cache: "no-store" });
+            const res = await fetch(`/api/topic`, { cache: "no-store" });
             return res.json();
         }
     });
 
     return (
         <>
-            <DataTable value={difficultyValues} loading={isDataLoading}>
+            <DataTable value={topicValues} loading={isDataLoading}>
                 <Column field='name' header="Name"></Column>
             </DataTable>
             <Link href="/">Home</Link>

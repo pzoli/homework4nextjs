@@ -35,4 +35,4 @@ questionAnswerSchema.pre("deleteMany", async function (next) {
     next();
 });
 
-export default mongoose.models.QuestionAnswer || model("questionanswer", questionAnswerSchema);
+export default mongoose.models.QuestionAnswer || model("QuestionAnswer", questionAnswerSchema);

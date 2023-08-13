@@ -8,6 +8,8 @@ export default function Home() {
       <Link href="/difficulty">Difficulty</Link>
       <br />
       <Link href="/question">Question</Link>
+      <br />
+      <Link href="/topic">Topic</Link>
     </main>
   )
 }
